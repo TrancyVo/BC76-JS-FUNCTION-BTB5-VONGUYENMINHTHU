@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>BÀI TẬP NỘP JS FUNCTION BUỔI 5</h1>
+      <p class="infoDev">_ Học viên Cybersoft (BC76): VÕ NGUYỄN MINH THƯ _</p>
+      <!-- BT1: QUẢN LÝ TUYỂN SINH -->
+      <div class="mb-5">
+        <h2>Bài Tập 1: QUẢN LÝ TUYỂN SINH</h2>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder"
+            >Nhập điểm chuẩn hội đồng:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="diemChuan"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập điểm chuẩn hội đồng"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder">Nhập điểm Môn 1:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="mon1"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập điểm Môn 1"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder">Nhập điểm Môn 2:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="mon2"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập điểm Môn 2"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder">Nhập điểm Môn 3:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="mon3"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập điểm Môn 3"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder"
+            >Nhập khu vực ưu tiên:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="khuVuc"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập khu vực ưu tiên"
+          />
+          <p class="text-danger fw-bold">
+            Nhập X nếu không thuộc khu vực ưu tiên
+          </p>
+        </div>
+
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder"
+            >Nhập đối tượng ưu tiên:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="doiTuong"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập đối tượng ưu tiên"
+          />
+          <p class="text-danger fw-bold">
+            Nhập 0 nếu không thuộc đối tượng ưu tiên
+          </p>
+        </div>
+        <button id="btn1" class="btn btn-dark">
+          Tính Tổng Điểm Và Xét Duyệt
+        </button>
+        <p class="ketQua1 p-3 bg-danger bg-opacity-75 text-white mt-3"></p>
+      </div>
+
+      <!-- BT2: TÍNH TIỀN ĐIỆN -->
+      <div class="mb-5">
+        <h2>Bài Tập 2: TÍNH TIỀN ĐIỆN</h2>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder">Tên khách hàng:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="tenKhach"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập tên khách hàng"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder"
+            >Thông tin KW điện tiêu thụ:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="kwDien"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập kw điện tiêu thụ"
+          />
+        </div>
+        <button id="btn2" class="btn btn-dark">Tính tiền điện</button>
+        <p class="ketQua2 p-3 bg-danger bg-opacity-75 text-white mt-3"></p>
+      </div>
+
+      <!-- BT3: TÍNH THUẾ THU NHẬP CÁ NHÂN  -->
+      <div class="mb-5">
+        <h2>Bài Tập 3: TÍNH THUẾ THU NHẬP CÁ NHÂN</h2>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder">Họ Tên:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="hoTen"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập họ tên"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder">Tổng thu nhập năm:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="tongThuNhapNam"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập tổng thu nhập năm"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label fw-bolder">Số người phụ thuộc:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="soNguoiPhuThuoc"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập số người phụ thuộc"
+          />
+        </div>
+        <button id="btn3" class="btn btn-dark">
+          Tính thuế thu nhập cá nhân
+        </button>
+        <p class="ketQua3 p-3 bg-danger bg-opacity-75 text-white mt-3"></p>
+      </div>
+
+      <!-- BT4: TÍNH TIỀN CÁP CHO NHÀ DÂN VÀ DOANH NGHIỆP  -->
+      <div class="mb-5">
+        <h2>Bài Tập 4: TÍNH TIỀN CÁP CHO NHÀ DÂN VÀ DOANH NGHIỆP</h2>
+        <h4>Phân Khúc Khách Hàng:</h4>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="selector"
+            id="capNhaDan"
+            value="nhaDan"
+          />
+          <label class="form-check-label fw-medium" for="capNhaDan"
+            >NHÀ DÂN</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="selector"
+            id="capDoanhNghiep"
+            value="doanhNghiep"
+          />
+          <label class="form-check-label fw-medium" for="capDoanhNghiep"
+            >DOANH NGHIỆP</label
+          >
+        </div>
+
+        <!-- SL KẾT NỐI (DOANH NGHIỆP) -->
+        <div id="theKetNoi" class="my-3" style="display: none">
+          <label for="" class="form-label fw-bolder"
+            >Số lượng kết nối (dành cho Doanh Nghiệp):</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="KetNoi"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập số lượng kết nối (dành cho Doanh Nghiệp)"
+          />
+        </div>
+
+        <!-- SL KÊNH CAO CẤP  -->
+        <div class="my-3">
+          <label for="" class="form-label fw-bolder"
+            >Số lượng kênh cao cấp:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="kenhCaoCap"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập số lượng kênh cao cấp "
+          />
+        </div>
+        <button id="btn4" class="btn btn-dark">Tính tiền cáp</button>
+        <p class="ketQua4 p-3 bg-danger bg-opacity-75 text-white mt-3"></p>
+        <p class="ending">__ Thanks For Watching __</p>
+      </div>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

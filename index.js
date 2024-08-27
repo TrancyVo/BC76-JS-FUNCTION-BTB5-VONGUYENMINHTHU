@@ -240,7 +240,7 @@ function tinhThuNhapChiuThue(tongThuNhapNam, soNguoiPhuThuoc) {
 }
 function thueSuat(thuNhapChiuThue) {
   let thueSuat = 0;
-  if (thuNhapChiuThue <= 60) {
+  if (thuNhapChiuThue <= 60000000) {
     thueSuat = 0.05;
   } else if (thuNhapChiuThue > 60000000 && thuNhapChiuThue <= 120000000) {
     thueSuat = 0.1;

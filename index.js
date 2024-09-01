@@ -5,6 +5,9 @@ const khuVucC = "c";
 const khuVucX = "x";
 function diemKhuVucUuTien(maKhuVuc) {
   switch (maKhuVuc) {
+    case khuVucX: {
+      return 0;
+    }
     case khuVucA: {
       return 2;
     }
@@ -14,18 +17,18 @@ function diemKhuVucUuTien(maKhuVuc) {
     case khuVucC: {
       return 0.5;
     }
-    case khuVucX: {
-      return 0;
-    }
   }
 }
 
+const doiTuong0 = "0";
 const doiTuong1 = "1";
 const doiTuong2 = "2";
 const doiTuong3 = "3";
-const doiTuong0 = "0";
 function diemDoiTuongUuTien(maDoiTuong) {
   switch (maDoiTuong) {
+    case doiTuong0: {
+      return 0;
+    }
     case doiTuong1: {
       return 2.5;
     }
@@ -34,9 +37,6 @@ function diemDoiTuongUuTien(maDoiTuong) {
     }
     case doiTuong3: {
       return 1;
-    }
-    case doiTuong0: {
-      return 0;
     }
   }
 }
@@ -56,33 +56,51 @@ function xetDuyetTrungTuyen(diemTong, diemChuan, mon1, mon2, mon3) {
 
 document.getElementById("btn1").onclick = function () {
   // INPUT
-  //Lấy dữ liệu số
-  let diemChuan = document.getElementById("diemChuan").value * 1;
-  let diemMon1 = document.getElementById("mon1").value * 1;
-  let diemMon2 = document.getElementById("mon2").value * 1;
-  let diemMon3 = document.getElementById("mon3").value * 1;
+  let nhapDiemChuan = document.getElementById("diemChuan").value;
+  let nhapDiemMon1 = document.getElementById("mon1").value;
+  let nhapDiemMon2 = document.getElementById("mon2").value;
+  let nhapDiemMon3 = document.getElementById("mon3").value;
+  let maKVUT = document.getElementById("khuVuc").value;
+  let maDTUT = document.getElementById("doiTuong").value;
+  if (
+    // nhapDiemChuan == "" ||
+    // nhapDiemMon1 == "" ||
+    // nhapDiemMon2 == "" ||
+    // nhapDiemMon3 == "" ||
+    // maKVUT === "" ||
+    // maDTUT === ""
+    !nhapDiemChuan ||
+    !nhapDiemMon1 ||
+    !nhapDiemMon2 ||
+    !nhapDiemMon3 ||
+    !maKVUT ||
+    !maDTUT
+  ) {
+    return alert(`Vui lòng điền đầy đủ thông tin`);
+  }
+  let diemChuan = nhapDiemChuan * 1;
+  let diemMon1 = nhapDiemMon1 * 1;
+  let diemMon2 = nhapDiemMon2 * 1;
+  let diemMon3 = nhapDiemMon3 * 1;
+  if (
+    diemChuan <= 0 ||
+    diemMon1 < 0 ||
+    diemMon1 > 10 ||
+    diemMon2 < 0 ||
+    diemMon2 > 10 ||
+    diemMon3 < 0 ||
+    diemMon3 > 10
+  ) {
+    return alert(`Điểm số không hợp lệ `);
+  }
+  let diemKVUT = diemKhuVucUuTien(maKVUT);
+  let diemDTUT = diemDoiTuongUuTien(maDTUT);
   console.log(diemChuan);
   console.log(diemMon1);
   console.log(diemMon2);
   console.log(diemMon3);
-  //Lấy dữ liệu mã -> Lọc qua hàm lấy ra dữ liệu số
-  //Mã KVUT
-  let maKVUT = document.getElementById("khuVuc").value;
-  if (maKVUT === null) {
-    alert(`Vui lòng nhập mã khu vực`);
-  }
-  let layDiemKVUT = diemKhuVucUuTien(maKVUT);
-  let diemKVUT = layDiemKVUT;
   console.log(diemKVUT);
-  //Mã DTUT
-  let maDTUT = document.getElementById("doiTuong").value;
-  if (maDTUT === null) {
-    alert(`Vui lòng nhập mã đối tượng`);
-  }
-  let layDiemDTUT = diemDoiTuongUuTien(maDTUT);
-  let diemDTUT = layDiemDTUT;
   console.log(diemDTUT);
-
   //   HANDLE
   let tongDiem = tinhDiemTong(diemMon1, diemMon2, diemMon3, diemKVUT, diemDTUT);
   console.log(tongDiem);
@@ -153,7 +171,11 @@ function tinhTienDienSau350KwDau(
 document.getElementById("btn2").onclick = function () {
   // INPUT
   let tenKhach = document.getElementById("tenKhach").value;
-  let kwDien = document.getElementById("kwDien").value * 1;
+  let nhapKwDien = document.getElementById("kwDien").value;
+  if (!tenKhach || !nhapKwDien) {
+    return alert(`Vui lòng nhập đầy đủ dữ liệu`);
+  }
+  let kwDien = nhapKwDien * 1;
   let tienDien = 0;
   let giaDien50KwDau = 500;
   let giaDien50KwKe = 650;
@@ -189,9 +211,8 @@ document.getElementById("btn2").onclick = function () {
   // }
   */
   //C2: FUNCTION
-  if (!kwDien || !tenKhach) {
-    alert(`Vui lòng nhập đầy đủ dữ liệu`);
-    return;
+  if (kwDien <= 0) {
+    return alert(`Số Kw Điện không hợp lệ`);
   } else if (kwDien <= 50) {
     tienDien = tinhTienDien50KwDau(kwDien, giaDien50KwDau);
   } else if (50 < kwDien && kwDien <= 100) {
@@ -261,21 +282,23 @@ document.getElementById("btn3").onclick = function () {
   console.log(`BẮT ĐẦU`);
   // INPUT
   let inputHoTen = document.getElementById("hoTen").value;
-  let inputTongThuNhapNam = document.getElementById("tongThuNhapNam").value * 1;
-  let inputSoNguoiPhuThuoc =
-    document.getElementById("soNguoiPhuThuoc").value * 1;
+  let inputTongThuNhapNam = document.getElementById("tongThuNhapNam").value;
+  let inputSoNguoiPhuThuoc = document.getElementById("soNguoiPhuThuoc").value;
+
   // HANDLE
   if (!inputHoTen || !inputTongThuNhapNam || !inputSoNguoiPhuThuoc) {
     alert(`Vui lòng nhập đầy đủ thông tin`);
     return;
   }
+  let tongThuNhapNam = inputTongThuNhapNam * 1;
+  let soNguoiPhuThuoc = inputSoNguoiPhuThuoc * 1;
+  if (tongThuNhapNam <= 0 || soNguoiPhuThuoc < 0) {
+    return alert(`Vui lòng nhập đầy đủ thông tin`);
+  }
   let thuNhapChiuThue = 0;
   let thueSuatCN = 0;
   let thueCaNhan = 0;
-  thuNhapChiuThue = tinhThuNhapChiuThue(
-    inputTongThuNhapNam,
-    inputSoNguoiPhuThuoc
-  );
+  thuNhapChiuThue = tinhThuNhapChiuThue(tongThuNhapNam, soNguoiPhuThuoc);
   thueSuatCN = thueSuat(thuNhapChiuThue);
   thueCaNhan = thuNhapChiuThue * thueSuatCN;
   console.log(thueCaNhan);
@@ -292,8 +315,8 @@ document.getElementById("btn3").onclick = function () {
 // BT4: TÍNH TIỀN CÁP CHO NHÀ DÂN VÀ DOANH NGHIỆP
 const NHA_DAN = "nhaDan";
 const DOANH_NGHIEP = "doanhNghiep";
-function phiXuLy(maKH) {
-  switch (maKH) {
+function phiXuLy(LoaiKH) {
+  switch (LoaiKH) {
     case NHA_DAN: {
       return 4.5;
     }
@@ -302,8 +325,8 @@ function phiXuLy(maKH) {
     }
   }
 }
-function phiDichVu(maKH) {
-  switch (maKH) {
+function phiDichVu(LoaiKH) {
+  switch (LoaiKH) {
     case NHA_DAN: {
       return 20.5;
     }
@@ -312,8 +335,8 @@ function phiDichVu(maKH) {
     }
   }
 }
-function phiThue1KenhCaoCap(maKH) {
-  switch (maKH) {
+function phiThue1KenhCaoCap(LoaiKH) {
+  switch (LoaiKH) {
     case NHA_DAN: {
       return 7.5;
     }
@@ -336,45 +359,49 @@ function tinhCapDoanhNghiep(xuLy, dichVu, kenhCaoCap, soKenh, soKetNoi) {
   }
   return tienCapDoanhNghiep;
 }
+let loaiKhachHang = document.getElementById("khachHang");
 let theKetNoi = document.getElementById("theKetNoi");
-document.getElementById("capNhaDan").onclick = function () {
-  theKetNoi.style.display = "none";
-};
-document.getElementById("capDoanhNghiep").onclick = function () {
-  theKetNoi.style.display = "block";
+loaiKhachHang.onchange = function () {
+  if (loaiKhachHang.value === "doanhNghiep") {
+    theKetNoi.style.display = "block";
+  } else {
+    theKetNoi.style.display = "none";
+  }
 };
 
 document.getElementById("btn4").onclick = function () {
-  //B1: tạo biến chứa CL dom tới thẻ input-radio được checked vào
-  let khachHang = document.querySelector("input[name='selector']:checked");
-  //B2: nhưng nếu chưa có thẻ radio nào được check thì alert sẽ pop up và return sẽ ngưng hàm
-  if (!khachHang) {
-    alert(`Vui lòng nhập dữ liệu`);
-    return;
+  let maKh = document.getElementById("maKH").value;
+  let khachHang = loaiKhachHang.value;
+  let nhapSoKenhCaoCao = document.getElementById("kenhCaoCap").value;
+  let nhapSoKetNoi = document.getElementById("KetNoi").value;
+  if (!maKh || !khachHang || !nhapSoKenhCaoCao || !nhapSoKetNoi) {
+    return alert(`Vui lòng điền đầy đủ thông tin`);
   }
-  //còn nếu KH có chọn option -> dom tới thẻ input-radio được checked vào -> lấy dữ liệu
-  let maKH = khachHang.value;
-  let soLuongKetNoi = document.getElementById("KetNoi").value * 1;
-  let soLuongKenh = document.getElementById("kenhCaoCap").value * 1;
-  if (!soLuongKenh || !soLuongKetNoi) {
-    alert(`Vui lòng nhập dữ liệu`);
-    return;
+  let soKenhCaoCap = nhapSoKenhCaoCao * 1;
+  let soKetNoi = nhapSoKetNoi * 1;
+  if (
+    soKenhCaoCap <= 0 ||
+    soKetNoi <= 0 ||
+    !Number.isInteger(soKenhCaoCap) ||
+    !Number.isInteger(soKetNoi)
+  ) {
+    return alert(`Số liệu không hợp lệ`);
   }
   // HANDLE
   let tienCap = 0;
-  let xuLy = phiXuLy(maKH);
-  let dichVu = phiDichVu(maKH);
-  let giaKenhCaoCap = phiThue1KenhCaoCap(maKH);
+  let xuLy = phiXuLy(khachHang);
+  let dichVu = phiDichVu(khachHang);
+  let giaKenhCaoCap = phiThue1KenhCaoCap(khachHang);
 
-  if (maKH == NHA_DAN) {
+  if (khachHang == NHA_DAN) {
     tienCap = tinhCapNhaDan(xuLy, dichVu, giaKenhCaoCap, soLuongKenh);
   } else
     tienCap = tinhCapDoanhNghiep(
       xuLy,
       dichVu,
       giaKenhCaoCap,
-      soLuongKenh,
-      soLuongKetNoi
+      soKenhCaoCap,
+      soKetNoi
     );
   let tienCapUsd = tienCap.toLocaleString("en-US", {
     style: "currency",
@@ -383,5 +410,5 @@ document.getElementById("btn4").onclick = function () {
 
   document.querySelector(
     ".ketQua4"
-  ).innerHTML = `Số tiền Cáp quý khách cần thanh toán: ${tienCapUsd}`;
+  ).innerHTML = `Mã khách hàng: ${maKh} <br> Số tiền Cáp quý khách cần thanh toán: ${tienCapUsd}`;
 };

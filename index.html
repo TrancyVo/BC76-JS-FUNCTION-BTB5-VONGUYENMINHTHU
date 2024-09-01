@@ -31,7 +31,7 @@
             >Nhập điểm chuẩn hội đồng:</label
           >
           <input
-            type="text"
+            type="number"
             class="form-control"
             name=""
             id="diemChuan"
@@ -42,7 +42,7 @@
         <div class="mb-3">
           <label for="" class="form-label fw-bolder">Nhập điểm Môn 1:</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             name=""
             id="mon1"
@@ -53,7 +53,7 @@
         <div class="mb-3">
           <label for="" class="form-label fw-bolder">Nhập điểm Môn 2:</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             name=""
             id="mon2"
@@ -64,7 +64,7 @@
         <div class="mb-3">
           <label for="" class="form-label fw-bolder">Nhập điểm Môn 3:</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             name=""
             id="mon3"
@@ -72,39 +72,34 @@
             placeholder="Vui lòng nhập điểm Môn 3"
           />
         </div>
-        <div class="mb-3">
-          <label for="" class="form-label fw-bolder"
-            >Nhập khu vực ưu tiên:</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name=""
-            id="khuVuc"
-            aria-describedby="helpId"
-            placeholder="Vui lòng nhập khu vực ưu tiên"
-          />
-          <p class="text-danger fw-bold">
-            Nhập X nếu không thuộc khu vực ưu tiên
-          </p>
-        </div>
-
-        <div class="mb-3">
-          <label for="" class="form-label fw-bolder"
-            >Nhập đối tượng ưu tiên:</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name=""
-            id="doiTuong"
-            aria-describedby="helpId"
-            placeholder="Vui lòng nhập đối tượng ưu tiên"
-          />
-          <p class="text-danger fw-bold">
-            Nhập 0 nếu không thuộc đối tượng ưu tiên
-          </p>
-        </div>
+        <form>
+          <!-- Chọn Khu vực ưu tiên  -->
+          <div class="mb-3">
+            <label for="exampleSelect" class="form-label fw-bold"
+              >Chọn khu vực:</label
+            >
+            <select class="form-select" id="khuVuc">
+              <option value="" selected>Chọn khu vực</option>
+              <option value="x">X - Không thuộc khu vực ưu tiên</option>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+            </select>
+          </div>
+          <!-- Chọn Đối tượng ưu tiên  -->
+          <div class="mb-3">
+            <label for="exampleSelect" class="form-label fw-bold"
+              >Chọn đối tượng:</label
+            >
+            <select class="form-select" id="doiTuong">
+              <option value="" selected>Chọn đối tượng</option>
+              <option value="0">0 - Không thuộc đối tượng ưu tiên</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </form>
         <button id="btn1" class="btn btn-dark">
           Tính Tổng Điểm Và Xét Duyệt
         </button>
@@ -187,8 +182,8 @@
       <!-- BT4: TÍNH TIỀN CÁP CHO NHÀ DÂN VÀ DOANH NGHIỆP  -->
       <div class="mb-5">
         <h2>Bài Tập 4: TÍNH TIỀN CÁP CHO NHÀ DÂN VÀ DOANH NGHIỆP</h2>
-        <h4>Phân Khúc Khách Hàng:</h4>
-        <div class="form-check">
+        <!-- <h4>Phân Khúc Khách Hàng:</h4> -->
+        <!-- <div class="form-check">
           <input
             class="form-check-input"
             type="radio"
@@ -211,6 +206,16 @@
           <label class="form-check-label fw-medium" for="capDoanhNghiep"
             >DOANH NGHIỆP</label
           >
+        </div> -->
+        <div class="mb-3">
+          <label for="exampleSelect" class="form-label fw-bold"
+            >Phân khúc khách hàng:</label
+          >
+          <select class="form-select" id="khachHang">
+            <option value="" selected>Chọn phân khúc khách hàng</option>
+            <option value="nhaDan">Nhà Dân</option>
+            <option value="doanhNghiep">Doanh Nghiệp</option>
+          </select>
         </div>
 
         <!-- SL KẾT NỐI (DOANH NGHIỆP) -->
@@ -219,7 +224,7 @@
             >Số lượng kết nối (dành cho Doanh Nghiệp):</label
           >
           <input
-            type="text"
+            type="number"
             class="form-control"
             name=""
             id="KetNoi"
@@ -227,19 +232,30 @@
             placeholder="Vui lòng nhập số lượng kết nối (dành cho Doanh Nghiệp)"
           />
         </div>
-
         <!-- SL KÊNH CAO CẤP  -->
         <div class="my-3">
           <label for="" class="form-label fw-bolder"
             >Số lượng kênh cao cấp:</label
           >
           <input
-            type="text"
+            type="number"
             class="form-control"
             name=""
             id="kenhCaoCap"
             aria-describedby="helpId"
             placeholder="Vui lòng nhập số lượng kênh cao cấp "
+          />
+        </div>
+        <!-- MÃ KHÁCH HÀNG  -->
+        <div class="my-3">
+          <label for="" class="form-label fw-bolder">Mã khách hàng:</label>
+          <input
+            type="text"
+            class="form-control"
+            name=""
+            id="maKH"
+            aria-describedby="helpId"
+            placeholder="Vui lòng nhập mã khách hàng"
           />
         </div>
         <button id="btn4" class="btn btn-dark">Tính tiền cáp</button>

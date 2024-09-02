@@ -374,18 +374,36 @@ document.getElementById("btn4").onclick = function () {
   let khachHang = loaiKhachHang.value;
   let nhapSoKenhCaoCao = document.getElementById("kenhCaoCap").value;
   let nhapSoKetNoi = document.getElementById("KetNoi").value;
-  if (!maKh || !khachHang || !nhapSoKenhCaoCao || !nhapSoKetNoi) {
-    return alert(`Vui lòng điền đầy đủ thông tin`);
+  //Điều kiện nhập liệu
+  if (!khachHang) {
+    return alert(`Vui lòng chọn phân khúc khách hàng`);
+  } else {
+    if (khachHang == NHA_DAN) {
+      if (!nhapSoKenhCaoCao || !maKh) {
+        return alert(`Vui lòng điền đầy đủ thông tin Nhà Dân`);
+      }
+    } else {
+      if (!nhapSoKetNoi || !nhapSoKenhCaoCao || !maKh) {
+        return alert(`Vui lòng điền đầy đủ thông tin Doanh Nghiệp`);
+      }
+    }
   }
+  //Điều kiện dữ liệu nhập vào
   let soKenhCaoCap = nhapSoKenhCaoCao * 1;
   let soKetNoi = nhapSoKetNoi * 1;
-  if (
-    soKenhCaoCap <= 0 ||
-    soKetNoi <= 0 ||
-    !Number.isInteger(soKenhCaoCap) ||
-    !Number.isInteger(soKetNoi)
-  ) {
-    return alert(`Số liệu không hợp lệ`);
+  if (khachHang == NHA_DAN) {
+    if (soKenhCaoCap <= 0 || !Number.isInteger(soKenhCaoCap)) {
+      return alert(`Số liệu không hợp lệ`);
+    }
+  } else {
+    if (
+      soKenhCaoCap <= 0 ||
+      soKetNoi <= 0 ||
+      !Number.isInteger(soKenhCaoCap) ||
+      !Number.isInteger(soKetNoi)
+    ) {
+      return alert(`Số liệu không hợp lệ`);
+    }
   }
   // HANDLE
   let tienCap = 0;
@@ -394,7 +412,7 @@ document.getElementById("btn4").onclick = function () {
   let giaKenhCaoCap = phiThue1KenhCaoCap(khachHang);
 
   if (khachHang == NHA_DAN) {
-    tienCap = tinhCapNhaDan(xuLy, dichVu, giaKenhCaoCap, soLuongKenh);
+    tienCap = tinhCapNhaDan(xuLy, dichVu, giaKenhCaoCap, soKenhCaoCap);
   } else
     tienCap = tinhCapDoanhNghiep(
       xuLy,
